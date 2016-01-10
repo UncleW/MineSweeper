@@ -13,7 +13,7 @@ public class ListenerStart implements ActionListener{
 		// TODO Auto-generated method stub
 		
 		//窗口初始化
-		slV.InitializingPanel();
+		slV.initializingPanel();
 		
 		
 	}

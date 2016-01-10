@@ -13,17 +13,17 @@ import com.ww.util.FinalFile;
 public class WinningJudge extends Thread{
 	SaoleiView slV;
 	JButton[][] but;
-	int[][] isMine;
-	int flag;
+	//int[][] isMine;
+	//int flag;
 	public WinningJudge(SaoleiView slV){
 		this.slV=slV;
 		but=slV.getMineField();
-		isMine=slV.getIsMine();
-		flag=0;
+		//isMine=slV.getIsMine();
+		//flag=0;
 	}
 	public void run(){
 		//
-		while(flag==0){
+		while(true){
 			int minenum=0;
 			for (int i=0;i<but.length;i++){
 				for (int j=0;j<but[i].length;j++){
@@ -44,7 +44,7 @@ public class WinningJudge extends Thread{
 				//System.out.println(slV.getJtMineNum().getText());
 				System.out.println(flagnu);
 				JOptionPane.showMessageDialog(slV.getContentPane(),"赢了", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
-				slV.InitializingPanel();
+				slV.initializingPanel();
 				//flag=1;
 				//break;
 			}

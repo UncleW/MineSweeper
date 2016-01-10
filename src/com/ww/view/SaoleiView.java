@@ -19,11 +19,11 @@ public class SaoleiView extends JFrame{
 	private JPanel statePanel,minePanel;
 	private JTextField jtTime,jtMineNum;
 	private RightHandler rh;
+	private MainHandler lm;
 	private int mineNum,width,height;
-	private boolean timerFlag,winFlag,loseFlag;
+	private boolean timerFlag,winFlag;
 	private int[][] isMine;//保存地雷位置信息，90代表地雷
 	private int[][] listenerMarkm;//右键监听标志
-	private MainHandler lm;
 	
 	
 	public SaoleiView(){
@@ -43,8 +43,6 @@ public class SaoleiView extends JFrame{
 		//输赢及计时的flag
 		timerFlag=false;
 		winFlag=false;
-		loseFlag=false;
-		
 		
 		
 		
@@ -95,8 +93,7 @@ public class SaoleiView extends JFrame{
 	}
 	
 	//界面初始化，点击开始或者游戏失败后调用
-	public void InitializingPanel(){
-		//this.loseFlag=false;
+	public void initializingPanel(){
 		this.setIsMine(ComputeModel.getRandom(this.getWidthNum(),this.getHeightNum(), this.getMineNum()));
 		//ComputeModel.testPrint(this.getIsMine());
 		this.getJtMineNum().setText(ComputeModel.forDisp(this.getMineNum()));
@@ -158,14 +155,6 @@ public class SaoleiView extends JFrame{
 
 	public void setWinFlag(boolean winFlag) {
 		this.winFlag = winFlag;
-	}
-
-	public boolean isLoseFlag() {
-		return loseFlag;
-	}
-
-	public void setLoseFlag(boolean loseFlag) {
-		this.loseFlag = loseFlag;
 	}
 
 	public void setTimerFlag(boolean timerFlag) {

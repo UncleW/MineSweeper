@@ -1,4 +1,7 @@
 package com.ww.controller;
+/*
+ * 实现鼠标左键单击、左右键点击监听
+ */
 
 import java.awt.event.*;
 
@@ -26,15 +29,11 @@ public class MainHandler implements ActionListener,java.awt.event.MouseListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		xy=ComputeModel.getActionBut(e.getActionCommand());
-		//this.row=xy[0];
-		//this.col=xy[1];
 		slV.setTimerFlag(true);
 		//如果没有被标上红旗，则翻开
 		if(slV.getMineField()[xy[0]][xy[1]].getIcon()!=FinalFile.Right_Icon[1]){
 			setType(xy[0],xy[1]);
-		}
-		//setType(xy[0],xy[1]);
-		
+		}		
 	}
 	//内部函数，判断点击的按钮是否是地雷
 	public void setType(int row,int col){
@@ -47,7 +46,7 @@ public class MainHandler implements ActionListener,java.awt.event.MouseListener{
 			but.setIcon(FinalFile.Mine_Icon[1]);
 			slV.showMine();
 			JOptionPane.showMessageDialog(slV.getContentPane(),"输了", "踩到雷了！", JOptionPane.INFORMATION_MESSAGE);
-			slV.InitializingPanel();
+			slV.initializingPanel();
 		}
 		//如果是空。。对周边8个格子进行迭代判断
 		else if (slV.getIsMine()[row][col]==0){
@@ -85,7 +84,7 @@ public class MainHandler implements ActionListener,java.awt.event.MouseListener{
 	//鼠标左右键同时按下，判断周边地雷格
 	public void mousePressed(MouseEvent e){
 		
-		if (e.getModifiersEx()==(e.BUTTON1_DOWN_MASK|e.BUTTON3_DOWN_MASK)){
+		if (e.getModifiersEx()==(MouseEvent.BUTTON1_DOWN_MASK|MouseEvent.BUTTON3_DOWN_MASK)){
 			int a[][]=ComputeModel.genArr(row, col);
 			int b=0;
 			for (int i=0;i<a.length;i++){
