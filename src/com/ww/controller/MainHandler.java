@@ -2,7 +2,6 @@ package com.ww.controller;
 
 import java.awt.event.*;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -30,13 +29,14 @@ public class MainHandler implements ActionListener,java.awt.event.MouseListener{
 		//this.row=xy[0];
 		//this.col=xy[1];
 		slV.setTimerFlag(true);
+		//如果没有被标上红旗，则翻开
 		if(slV.getMineField()[xy[0]][xy[1]].getIcon()!=FinalFile.Right_Icon[1]){
 			setType(xy[0],xy[1]);
 		}
 		//setType(xy[0],xy[1]);
 		
 	}
-	//内部函数，确定点击的按钮是否是地雷
+	//内部函数，判断点击的按钮是否是地雷
 	public void setType(int row,int col){
 		JButton but=slV.getMineField()[row][col];
 		but.setBorder(FinalFile.bor_2);
@@ -45,6 +45,7 @@ public class MainHandler implements ActionListener,java.awt.event.MouseListener{
 		//如果是地雷
 		if (slV.getIsMine()[row][col]==90){
 			but.setIcon(FinalFile.Mine_Icon[1]);
+			slV.showMine();
 			JOptionPane.showMessageDialog(slV.getContentPane(),"输了", "踩到雷了！", JOptionPane.INFORMATION_MESSAGE);
 			slV.InitializingPanel();
 		}
@@ -110,9 +111,6 @@ public class MainHandler implements ActionListener,java.awt.event.MouseListener{
 					}
 				}
 			}
-			//System.out.println("wsss");
-			//System.out.println(row);
-			//System.out.println(col);
 			
 			
 		}

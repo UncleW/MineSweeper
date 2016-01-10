@@ -1,6 +1,9 @@
 package com.ww.view;
 /*
- * 独立线程，以剩下地雷的数量来触发判断是否游戏胜利
+ * 判断输赢
+ * 1.当除了地雷格其他格子都被点击过了判定为赢
+ * 2.当所有红旗下面都是雷而且红旗数等于总地雷数时判定为赢
+ * 
  */
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -19,28 +22,35 @@ public class WinningJudge extends Thread{
 		flag=0;
 	}
 	public void run(){
-		//flag0表示失败
+		//
 		while(flag==0){
-			if (slV.getJtMineNum().getText().equals("000")){
-				for(int i=0;i<but.length;i++){
-					for (int j=0;j<but[i].length;j++){
-						if(but[i][j].getIcon()==FinalFile.Right_Icon[1]){
-							if(isMine[i][j]!=90){
-								flag=1;
-								break;
-							}
-							else {
-								flag=0;
-							}
-						}
+			int minenum=0;
+			for (int i=0;i<but.length;i++){
+				for (int j=0;j<but[i].length;j++){
+					if (but[i][j].getBorder()==FinalFile.bor_0){
+						minenum++;
 					}
 				}
 			}
-			//JOptionPane.showMessageDialog(slV.getContentPane(),"弹出窗口", "游戏胜利“, JOptionPane.INFORMATION_MESSAGE);
-			//slV.InitializingPanel();
+			int flagnu=0;
+			for (int i=0;i<but.length;i++){
+				for (int j=0;j<but[i].length;j++){
+					if(but[i][j].getIcon()==FinalFile.Right_Icon[1]&&slV.getIsMine()[i][j]==90){
+						flagnu++;
+					}
+				}
+			}
+			if (minenum==slV.getMineNum()||flagnu==slV.getMineNum()){
+				//System.out.println(slV.getJtMineNum().getText());
+				System.out.println(flagnu);
+				JOptionPane.showMessageDialog(slV.getContentPane(),"赢了", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
+				slV.InitializingPanel();
+				//flag=1;
+				//break;
+			}
+			//System.out.println(flagnu);
 		}
-		JOptionPane.showMessageDialog(slV.getContentPane(),"弹出窗口", "游戏胜利", JOptionPane.INFORMATION_MESSAGE);
-		slV.InitializingPanel();
+		
 	}
 	
 }

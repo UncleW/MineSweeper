@@ -29,9 +29,9 @@ public class SaoleiView extends JFrame{
 	public SaoleiView(){
 		super("扫雷");
 
-		mineNum=FinalFile.level_0_mines;
-		width=FinalFile.level_0_square;
-		height=FinalFile.level_0_square;
+		mineNum=FinalFile.level_1_mines;
+		width=FinalFile.level_1_square;
+		height=FinalFile.level_1_square;
 		int size[]=ComputeModel.getWindowSize(width, height);
 		this.setBounds(200,200,size[0],size[1]-8);
 		this.setLayout(null);
@@ -108,6 +108,18 @@ public class SaoleiView extends JFrame{
 				this.getMineField()[i][j].setBorder(FinalFile.bor_0);
 				this.getMineField()[i][j].setText(null);
 				this.getMineField()[i][j].setIcon(null);
+			}
+		}
+	}
+	
+	//显示所有雷的位置，游戏失败时调用
+	public void showMine(){
+		for(int i=0;i<mineField.length;i++){
+			for (int j=0;j<mineField[i].length;j++){
+				if (isMine[i][j]==90){
+					mineField[i][j].setIcon(FinalFile.Mine_Icon[1]);
+					mineField[i][j].setBorder(FinalFile.bor_2);
+				}
 			}
 		}
 	}
