@@ -44,6 +44,7 @@ public class MainHandler implements ActionListener,java.awt.event.MouseListener{
 		//如果是地雷
 		if (slV.getIsMine()[row][col]==90){
 			but.setIcon(FinalFile.Mine_Icon[1]);
+			slV.setWinFlag(true);
 			slV.showMine();
 			JOptionPane.showMessageDialog(slV.getContentPane(),"输了", "踩到雷了！", JOptionPane.INFORMATION_MESSAGE);
 			slV.initializingPanel();

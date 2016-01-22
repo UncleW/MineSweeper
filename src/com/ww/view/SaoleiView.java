@@ -99,6 +99,7 @@ public class SaoleiView extends JFrame{
 		this.getJtMineNum().setText(ComputeModel.forDisp(this.getMineNum()));
 		this.getJtTime().setText(ComputeModel.forDisp(0));
 		this.setTimerFlag(false);
+		this.setWinFlag(false);
 		for (int i=0;i<this.getMineField().length;i++){
 			for (int j=0;j<this.getMineField().length;j++){
 				this.getListenerMarkm()[i][j]=1;

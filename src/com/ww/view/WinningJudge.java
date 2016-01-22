@@ -40,9 +40,9 @@ public class WinningJudge extends Thread{
 					}
 				}
 			}
-			if (minenum==slV.getMineNum()||flagnu==slV.getMineNum()){
+			if ((minenum==slV.getMineNum()||flagnu==slV.getMineNum())&&!slV.isWinFlag()){
 				//System.out.println(slV.getJtMineNum().getText());
-				System.out.println(flagnu);
+				//System.out.println(flagnu);
 				JOptionPane.showMessageDialog(slV.getContentPane(),"赢了", "Congratulations!", JOptionPane.INFORMATION_MESSAGE);
 				slV.initializingPanel();
 				//flag=1;
